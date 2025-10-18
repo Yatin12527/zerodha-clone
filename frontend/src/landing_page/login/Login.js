@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import API_BASE_URL from "../config/api";
 
 function Login() {
 const [userInfo, setUserInfo] = useState({email: "", password: ""});
@@ -17,7 +18,7 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post("https://backendzerodhaclone.onrender.com/login", userInfo);
+    const res = await axios.post(`${API_BASE_URL}/login`, userInfo);
     if (res.data.success) {
       toast.success(res.data.message);
       login(res.data.token, res.data.user); // Update the authentication state

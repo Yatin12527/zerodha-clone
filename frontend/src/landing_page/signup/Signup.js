@@ -4,6 +4,7 @@ import React, { useState} from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API_BASE_URL from "../config/api";
 
 function Signup() {
   const [newUser, setNewUser] = useState({
@@ -23,7 +24,7 @@ function Signup() {
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://backendzerodhaclone.onrender.com/signup", newUser);
+      const res = await axios.post(`${API_BASE_URL}/signup`, newUser);
       console.log(res);
       toast.success(res.data.message);
 

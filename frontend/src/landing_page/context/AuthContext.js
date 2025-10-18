@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import API_BASE_URL from "../config/api";
 
 // Create the AuthContext
 export const AuthContext = createContext();
@@ -19,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserInfo = async (token) => {
     try {
-      const response = await fetch("https://zerodhabackend-yx8q.onrender.com/user", {
+      const response = await fetch(`${API_BASE_URL}/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
